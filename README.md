@@ -1,12 +1,28 @@
-# Crowsi Windows operation contracts
+# crowsi-windows-operation-contracts
 
-Closed operation-only DTOs plus a bounded, digest- and file-descriptor-pinned helper client.
-This crate contains no Windows custody backend, secret retrieval API, provider implementation,
-authority store, or cross-account identity.
+Validate the narrow requests exchanged with a Windows helper process.
 
-The PA one-use input is the closed
-`crowsi://policy-authority/operation-authorize-once-request/v2` document. It carries only the
-signed selected-identity, Begin, Finish, and submission-current identity exchanges; bare identity
-or FreshUV documents are not accepted. The chain binds one prepared target operation, exact
-`TargetApprove`, an unsigned target-device proof binding, and only an Ed25519 `Sign` intent over
-that binding's domain-separated SHA-256 digest. Custody ID and proof-key reference stay distinct.
+## What you can do
+
+- Pin helper identity and operation limits.
+- Represent permitted helper requests and results.
+
+## Current scope
+
+These contracts do not install a helper or implement a Windows custody backend.
+
+Package distribution is not activated by this documentation. Use the checked-in source and the declared dependency versions; published availability must be verified separately.
+
+## Getting started
+
+Install Rust 1.97 or newer and make the declared dependencies available. Use the configured private registry when a dependency is not distributed publicly. Run from this repository:
+
+```sh
+cargo test --locked
+```
+
+## Documentation and source
+
+[Usage guide](docs/getting-started.md)
+
+[Implementation and public interfaces](src) · [Verification cases](tests) · [Contributing](CONTRIBUTING.md) · [Security reporting](SECURITY.md) · [License](LICENSE) · [Attribution notices](NOTICE)
